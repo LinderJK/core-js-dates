@@ -176,7 +176,6 @@ function formatDate(/* date */) {
  */
 function getCountWeekendsInMonth(month, year) {
   const daysInMonth = new Date(year, month, 0).getDate();
-  // console.log(daysInMonth);
   let weekend = 0;
   for (let day = 1; day <= daysInMonth; day += 1) {
     const currentDate = new Date(year, month - 1, day);
@@ -216,8 +215,15 @@ function getWeekNumberByDate(/* date */) {
  * Date(2024, 0, 13) => Date(2024, 8, 13)
  * Date(2023, 1, 1) => Date(2023, 9, 13)
  */
-function getNextFridayThe13th(/* date */) {
-  throw new Error('Not implemented');
+function getNextFridayThe13th(date) {
+  const nextDate = new Date(date);
+  nextDate.setDate(13);
+  while (true) {
+    if (nextDate.getDay() === 5) {
+      return nextDate;
+    }
+    nextDate.setMonth(nextDate.getMonth() + 1);
+  }
 }
 
 /**
