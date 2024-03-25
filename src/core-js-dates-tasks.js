@@ -157,7 +157,7 @@ function formatDate(date) {
     hour12: true,
   };
 
-  return date.toLocaleString('en-US', options);
+  return new Date(date).toLocaleString('en-US', options);
 }
 
 /**
